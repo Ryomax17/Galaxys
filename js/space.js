@@ -13,20 +13,25 @@ let busqueda = document.getElementById("inputBuscar").value;
 
 let response = fetch(`https://images-api.nasa.gov/search?q=${busqueda}`).then(response => response.json()) .then(data => {
     const array = data.collection.items;
+    contenedor.innerHTML = "";
     console.log(array);
 
     array.forEach(element => {
         
-        const tittle = element.tittle;
-        const description = element.description;
-        const link = element.links[0].href;
-        contenedor.innerHTML = `
-        <h2>${tittle}</h2>
-        <h4>Descripcion: ${description}</h4>
+        const tittle = element.data.length>0? element.data[0].title : "";
+        const description = element.data.length>0? element.data[0].description : "";
+        const link = element.links.length>0? element.links[0].href : "";
+
+        contenedor.innerHTML += `
+        <div class="galaxias">
+        <h3>${tittle}</h3>
+        <p>Descripcion: ${description}</p>
         <img src="${link}" alt="Imagen de ${tittle}">
+        </div>
     `;
-    }); {
-    }
+    // contenedor.appendChild(galaxyElement);
+    }); 
+    
 
 } );
 
