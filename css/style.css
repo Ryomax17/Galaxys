@@ -1,14 +1,17 @@
 main {
     min-height: calc(100vh - 160px);
   }
-
+  
+  #contenedor {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
   .galaxys {
     border: 1px solid #ccc; 
-    margin-bottom: 20px;
-    width: 33%; 
-    height: 10%; 
-    display: inline-block; 
-    vertical-align: top; 
+    margin-bottom: 5px;
+    width: 100%; 
   }
   
   .description {
